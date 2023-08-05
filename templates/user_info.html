@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block title%}
+{%for category, msg in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{category}}">{{ msg }}</div>
+{%endfor%}
+<h1>{{ user.username }}</h1>
+<h2>Account Information</h2>
+{%endblock%}
+{%block content%}
+    <h4>Username: <i>{{ user.username }}</i></h4>
+    <h4>Email: <i>{{ user.email }}</i></h4>
+    <h4>First Name: <i>{{ user.first_name }}</i></h4>
+    <h4>Last Name: <i>{{ user.last_name }}</i> </h4>
+    <h2>Feedback</h2>
+    {%for post in user.posts%}
+    <div class="feedback-div">
+        <h4>{{post.title }}</h4>
+        <p>{{post.content}}</p>
+    </div>
+    <div class="btn-div">
+        <a href="/feedback/{{post.id}}/update" class="btn btn-warning">Edit</a>
+        <form action="/feedback/{{post.id}}/delete" method="POST"
+         class="delete-form">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+        <hr>
+    {%endfor%}
+    <a href="/users/{{user.username}}/feedback/add"
+    class="btn btn-primary">Add New Feedback</a>
+    <form action="/users/{{user.username}}/delete" method="POST">
+       <button class="btn btn-danger">Delete User</button>
+   </form>
+{%endblock%}

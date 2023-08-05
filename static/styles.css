@@ -1,0 +1,15 @@
+h1, h2, h3 {
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+button, a {
+    margin: 10px;
+}
+.feedback-div, .btn-div, .delete-form {
+    display: inline-block;
+}

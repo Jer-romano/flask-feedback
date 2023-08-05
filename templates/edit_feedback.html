@@ -1,0 +1,7 @@
+{%extends 'add_feedback.html'%}
+{%block title%}
+<h1>Edit Feedback</h1>
+{%endblock%}
+{%block form_header%}
+<form action="/feedback/{{feedback.id}}/update" method="POST">
+{%endblock%}
